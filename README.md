@@ -1,49 +1,71 @@
-# DevTools Discord Bot by RataLife
+# **DevTools Discord Bot by RataLife**  
 
-## Overview
+## **Overview**  
 
-This is a full-stack application featuring a Discord bot that provides development tools through private ticket channels. The bot helps users with various conversions including AOB/Byte format conversion, image to byte array conversion, font to byte array conversion, and source code processing. Users interact with the bot through slash commands, which create private ticket channels with interactive menus and buttons for different conversion operations.
+This is a **full-stack application** featuring a **Discord bot** that provides **developer tools** through **private ticket channels**. The bot assists users with various conversions, including:  
 
-## User Preferences
+- **AOB/Byte Conversion**: Switches between hexadecimal formats and byte arrays.  
+- **Image to Byte Array**: Converts images into usable byte arrays for code.  
+- **Font to Byte Array**: Extracts font files and converts them into byte arrays.  
+- **Source Code Processing**: Analyzes and optimizes code snippets.  
 
-Preferred communication style: Simple, everyday language.
+Users interact via **slash commands (`/`)** that create **private ticket channels** with interactive menus and buttons for each operation.  
 
-## System Architecture
+🔗 **Official DevTools Website**: [https://twentyfox.lat/tools.html](https://twentyfox.lat/tools.html)  
 
-### Frontend Architecture
-- **React with TypeScript**: Modern React application built with Vite for fast development and building
-- **UI Components**: Comprehensive component library using shadcn/ui built on top of Radix UI primitives
-- **Styling**: Tailwind CSS with custom CSS variables for theming and design consistency
-- **State Management**: TanStack Query for server state management and API interactions
-- **Routing**: Wouter for lightweight client-side routing
-- **Build System**: Vite with custom configuration for development and production builds
+---  
 
-### Backend Architecture
-- **Node.js with Express**: RESTful API server handling bot status and ticket management endpoints
-- **TypeScript**: Full TypeScript implementation for type safety across the application
-- **Discord.js**: Discord bot implementation with slash commands, interactive components, and channel management
-- **Session Management**: In-memory session storage for tracking user interactions and conversion states
-- **Modular Services**: Separated concerns with dedicated services for ticket management and conversion operations
+## **System Architecture**  
 
-### Data Storage Solutions
-- **PostgreSQL with Drizzle ORM**: Primary database using Neon serverless PostgreSQL for scalability
-- **Schema Design**: User and ticket management with support for different ticket types and statuses
-- **In-Memory Storage**: Fallback storage implementation for development and testing environments
-- **Session Storage**: User interaction states stored in memory for real-time bot conversations
+### **🖥️ Frontend**  
+- **Core Technologies**:  
+  - **React + TypeScript**: Fast and type-safe development.  
+  - **Vite**: Ultra-fast bundler for dev and production.  
+  - **shadcn/ui**: Modern component library built on Radix UI.  
+  - **Tailwind CSS**: Utility-first styling with custom CSS variables.  
 
-### Authentication and Authorization
-- **Discord OAuth Integration**: Bot authentication using Discord bot tokens
-- **Channel Permissions**: Private ticket channels with restricted access for ticket creators
-- **Role-Based Access**: Bot has administrative permissions for channel and message management
+- **State Management**:  
+  - **TanStack Query**: Efficient API data handling.  
+  - **Wouter**: Lightweight client-side routing.  
 
-### External Dependencies
-- **Discord API**: Core integration for bot functionality, slash commands, and interactive components
-- **Neon Database**: Serverless PostgreSQL hosting for production data storage
-- **Replit Infrastructure**: Development environment with integrated deployment and runtime features
+- **UI Example**:  
+  ![UI Preview](https://i.ibb.co/4gF6vGbp/imagen-2025-08-13-141818952.png)  
 
-### Key Design Patterns
-- **Service Layer Architecture**: Separated business logic into dedicated service classes (TicketService, ConversionService)
-- **Command Pattern**: Discord slash commands implemented with structured command definitions and handlers
-- **Factory Pattern**: Dynamic creation of Discord embeds and interactive components based on user selections
-- **Repository Pattern**: Abstract storage interface allowing for multiple storage implementations (memory, database)
-- **Event-Driven Architecture**: Discord event handling with centralized interaction routing and processing
+### **⚙️ Backend**  
+- **Node.js + Express**: REST API for bot status and ticket management.  
+- **Discord.js**: Handles slash commands, interactive components, and channel management.  
+- **In-Memory Sessions**: Tracks user conversion states.  
+- **Modular Services**:  
+  - `TicketService`: Manages ticket creation and closure.  
+  - `ConversionService`: Handles AOB, image, font, and code conversions.  
+
+### **🗃️ Data Storage**  
+- **PostgreSQL (Neon)**: Primary database with **Drizzle ORM** for type-safe queries.  
+  - **Schema**:  
+    - `users` table: Discord ID, roles, preferences.  
+    - `tickets` table: Type (AOB, image, etc.), status (open/closed), history.  
+- **In-Memory Fallback**: Used for local development without DB dependency.  
+
+### **🔐 Authentication & Permissions**  
+- **Discord OAuth**: Bot authenticates via Discord tokens.  
+- **Private Channels**: Only the user and bot can access the ticket.  
+- **Role-Based Access**: The bot requires `Administrator` permissions for channel management.  
+
+### **📚 External Dependencies**  
+| Technology          | Purpose                          |  
+|---------------------|----------------------------------|  
+| Discord API         | Server & user interactions      |  
+| Neon (PostgreSQL)   | Serverless production DB       |  
+
+### **🛠️ Key Design Patterns**  
+1. **Service Layer**: Business logic separation (e.g., `ConversionService`).  
+2. **Command Pattern**: Each slash command (`/aob`, `/image`) has a dedicated handler.  
+3. **Embed Factory**: Dynamically generates Discord messages based on user actions.  
+4. **Repository Pattern**: Single interface for multiple storage backends (DB/memory).  
+5. **Event-Driven**: Listens for Discord interactions (buttons, dropdowns).  
+
+---  
+🔧 **Want to try it?** Invite the bot to your server or visit the [official website](https://twentyfox.lat/tools.html).  
+
+*(Preview: Bot UI in action)*  
+![UI Example](https://i.ibb.co/4gF6vGbp/imagen-2025-08-13-141818952.png)
